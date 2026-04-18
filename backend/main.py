@@ -1,4 +1,3 @@
-from predictor import train_and_predict
 import os
 
 import alpaca_trade_api as tradeapi #tradeapi is alias
@@ -15,7 +14,7 @@ import asyncio
 import sys
 sys.path.append('..')
 from strategies.SmaCross import SmaCross
-
+from predictor import train_and_predict
 
 # This line creates the "backtests" table in the PostegreSQL database I have connected/installed, if it doesn't exist
 models.Base.metadata.create_all(bind=engine)
@@ -193,3 +192,34 @@ def stop_live_trade(symbol: str):
     
     del live_tasks[symbol]
     return {"message": f"Live trading stopped for {symbol}."}
+@app.get("/api/predict/{symbol}")
+def predict_stock(symbol: str):
+    try:
+        data_df = api.get_bars(
+            symbol,
+            '1Day',
+            start='2021-01-01',
+            end=datetime.now().strftime('%Y-%m-%d'),
+            feed='iex'
+        ).df
+
+        if data_df.empty:
+            raise HTTPException(
+                status_code=404,
+                detail=f"No data found for symbol: {symbol}"
+            )
+
+        data_df['openinterest'] = 0
+
+        result = train_and_predict(data_df)
+        result["symbol"] = symbol
+        result["as_of"]  = datetime.now().strftime('%Y-%m-%d')
+
+        return result
+
+    except HTTPException:
+        raise
+    except ValueError as ve:
+        raise HTTPException(status_code=422, detail=str(ve))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
