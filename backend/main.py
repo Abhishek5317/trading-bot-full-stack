@@ -1,3 +1,4 @@
+from predictor import train_and_predict
 import os
 
 import alpaca_trade_api as tradeapi #tradeapi is alias
