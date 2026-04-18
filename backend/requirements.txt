@@ -6,3 +6,4 @@ backtrader
 matplotlib
 sqlalchemy
 psycopg2-binary
+scikit-learn
