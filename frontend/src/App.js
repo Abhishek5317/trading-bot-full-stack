@@ -1,15 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import AccountInfo from './AccountInfo.js';
 import Backtester from './Backtester.js';
+import PredictionPanel from './PredictionPanel.js';
 
 function App() {
   const [accountInfo, setAccountInfo] = useState(null);
-  const [symbol, setSymbol] = useState(''); 
+  const [symbol, setSymbol] = useState('');
   const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
-   
     fetch(`${API_URL}/api/account`)
       .then(response => response.json())
       .then(data => {
@@ -19,21 +19,20 @@ function App() {
         console.error('Error fetching account data:', error);
         setAccountInfo({ error: 'Could not connect to backend' });
       });
-  }, []);
+  }, [API_URL]);
 
   return (
     <div className="app-container">
       <header className="navbar">
         <h2>AlgoBot</h2>
       </header>
+
       <h1>Trading Bot Dashboard</h1>
-      
-      
+
       <section>
         <AccountInfo accountData={accountInfo} />
       </section>
 
-      
       <div className="symbol-input-section">
         <h3>Enter Stock Symbol</h3>
         <input
@@ -43,10 +42,13 @@ function App() {
           placeholder="Enter stock symbol (e.g., AAPL, TSLA, MSFT)"
         />
       </div>
-      
-     
+
       <section>
-        <Backtester symbol={symbol} setSymbol={setSymbol} />
+        <PredictionPanel symbol={symbol} />
+      </section>
+
+      <section>
+        <Backtester symbol={symbol} />
       </section>
     </div>
   );
