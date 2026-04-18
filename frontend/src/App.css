@@ -1,5 +1,3 @@
-/* FILE: frontend/src/App.css */
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -12,6 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  padding-bottom: 3rem;
 }
 
 .navbar {
@@ -19,7 +18,7 @@ body {
   padding: 1rem 0;
   text-align: center;
   background-color: #1a1a1a;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .app-container h1 {
@@ -28,24 +27,29 @@ body {
 
 .symbol-input-section {
   background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem 1.5rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 2rem;
   text-align: center;
-  width: 80%; /* Add this line */
-  max-width: 800px; /* Add this to prevent it from getting too wide on large screens */
+  width: 80%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+.symbol-input-section h3 {
+  margin-bottom: 0.75rem;
 }
 
 .symbol-input-section input {
-  padding: 0.8rem;
+  padding: 0.95rem 1rem;
   font-size: 1rem;
   background: #0a0a0a;
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #ffffff;
-  margin-left: 1rem;
-  width: 500px;
+  width: min(500px, 100%);
+  box-sizing: border-box;
 }
 
 .app-container section {
@@ -53,4 +57,15 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .symbol-input-section {
+    width: calc(100% - 2rem);
+  }
+
+  .app-container h1 {
+    text-align: center;
+    padding: 0 1rem;
+  }
 }
