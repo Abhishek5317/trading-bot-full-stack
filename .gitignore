@@ -18,6 +18,10 @@
 __pycache__/
 /backend/__pycache__/
 
+# Local SQLite database
+*.db
+/backend/*.db
+
 
 # ==================================
 # Node / Frontend (from create-react-app)
