@@ -1,0 +1,155 @@
+.ml-workbench {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ml-results {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ml-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hero-kpi {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-kpi span,
+.metric-card span,
+.snapshot-item span,
+.overlay-grid span {
+  color: #98a9bb;
+  font-size: 0.86rem;
+}
+
+.hero-kpi strong,
+.metric-card strong,
+.snapshot-item strong,
+.overlay-grid strong {
+  font-size: 1.18rem;
+  color: #ffffff;
+}
+
+.summary-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: #dce4ee;
+}
+
+.summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+  color: #a8b7c8;
+  font-size: 0.92rem;
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.stack-list span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(74, 194, 108, 0.12);
+  color: #dff9e6;
+  border: 1px solid rgba(74, 194, 108, 0.2);
+  font-size: 0.88rem;
+}
+
+.dual-chart-grid,
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tall-chart {
+  height: 360px;
+}
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.snapshot-item {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fold-table {
+  display: grid;
+  gap: 10px;
+}
+
+.fold-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr 0.8fr;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #dbe4ef;
+}
+
+.fold-head {
+  background: rgba(74, 194, 108, 0.12);
+  color: #ebfff1;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .ml-hero-grid,
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dual-chart-grid,
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .ml-hero-grid,
+  .metrics-grid,
+  .snapshot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fold-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
